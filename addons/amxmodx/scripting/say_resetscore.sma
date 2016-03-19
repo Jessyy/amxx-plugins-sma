@@ -1,7 +1,20 @@
+/**
+ *	Say Reset Score - say_resetscore.sma
+ *	
+ *	Based on Reset Score v1.1 by Silenttt from https://forums.alliedmods.net/showthread.php?t=74207
+ *		@released: 19/11/2011 (dd/mm/yyyy)
+ *	
+ *	Based on Reset Score v3.2 by Ex3cuTioN from https://www.extreamcs.com/forum/pluginuri-extream/reset-score-t50602.html
+ *		@released: 05/06/2013 (dd/mm/yyyy)
+ */
 #include <amxmodx>
 #include <amxmisc>
 #include <cstrike>
 #include <fun>
+
+#define PLUGIN_NAME		"Say Admin Check"
+#define PLUGIN_VERSION	"2016.03.19"
+#define PLUGIN_AUTHOR	"X"
 
 public TimeInterval = 210
 
@@ -9,19 +22,19 @@ new UserTime[33];
 
 public plugin_init()
 {
-	register_plugin("Reset Score", "1.0.0", "X");
+	register_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR);
 	
-	register_clcmd("say /rs", "reset_score", -1);
-	register_clcmd("say_team /rs", "reset_score", -1);
+	register_clcmd("say /rs", "SayCmd_ResetScore");
+	register_clcmd("say_team /rs", "SayCmd_ResetScore");
 	
-	register_clcmd("say /reset", "reset_score", -1);
-	register_clcmd("say_team /reset", "reset_score", -1);
+	register_clcmd("say /reset", "SayCmd_ResetScore");
+	register_clcmd("say_team /reset", "SayCmd_ResetScore";
 	
-	register_clcmd("say /resetscore", "reset_score", -1);
-	register_clcmd("say_team /resetscore", "reset_score", -1);
+	register_clcmd("say /resetscore", "SayCmd_ResetScore");
+	register_clcmd("say_team /resetscore", "SayCmd_ResetScore");
 }
 
-public reset_score(user)
+public SayCmd_ResetScore(user)
 {
 	new GameTime, TimeCvar, Float:GamesTime;
 	

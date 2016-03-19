@@ -1,11 +1,21 @@
+/**
+ *	GamePlay Grenade Trail - say_admins.sma
+ *	
+ *	Based on Grenade Trail v1.0 by Jim from https://forums.alliedmods.net/showthread.php?p=429750
+ *		@released: 21/01/2007 (dd/mm/yyyy)
+ */
 #include <amxmodx>
 #include <csx>
+
+#define PLUGIN_NAME		"GamePlay Grenade Trail"
+#define PLUGIN_VERSION	"2016.03.19"
+#define PLUGIN_AUTHOR	"X"
 
 new g_trail, g_cvar_tr, g_cvar_he, g_cvar_fb, g_cvar_sg;
 
 public plugin_init()
 {
-	register_plugin("Grenade Trail", "1.0.0", "X");
+	register_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR);
 	
 	g_cvar_tr = register_cvar("grenade_tr", "2");
 	g_cvar_he = register_cvar("grenade_he", "255000000");

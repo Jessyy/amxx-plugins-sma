@@ -1,23 +1,33 @@
+/**
+ *	Say Admin Check - say_admins.sma
+ *	
+ *	Based on Admin Check v1.51 by OneEyed from https://forums.alliedmods.net/showthread.php?p=230189
+ *		@released: 12/04/2006 (dd/mm/yyyy)
+ */
 #include <amxmodx>
+
+#define PLUGIN_NAME		"Say Admin Check"
+#define PLUGIN_VERSION	"2016.03.19"
+#define PLUGIN_AUTHOR	"X"
 
 new g_iMaxClients;
 static const COLOR[] = "^4";
 
 public plugin_init()
 {
-	register_plugin("Admin Check", "1.0.0", "X");
+	register_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR);
 	
-	register_clcmd("say /admin", "say_admins", -1);
-	register_clcmd("say /admins", "say_admins", -1);
+	register_clcmd("say /admin", "SayCmd_Admins");
+	register_clcmd("say /admins", "SayCmd_Admins");
 	
 	g_iMaxClients = get_maxplayers();
 }
 
-public say_admins(id)
+public SayCmd_Admins(id)
 {
 	set_task(0.1, "print_adminlist", id);
 	
-	return PLUGIN_HANDLED;
+	return PLUGIN_CONTINUE;
 }
 
 public print_adminlist(user)
@@ -32,18 +42,19 @@ public print_adminlist(user)
 		}
 	}
 	
-	len = format(message, 255, "%s ADMINS ONLINE: ", COLOR);
+	len = format(message, 255, "%sADMINS ONLINE: ", COLOR);
 	if(count > 0) {
 		for(x = 0; x < count; x++) {
 			len += format(message[len], 255-len, "%s %s", adminnames[x], x<(count-1) ? ", " : "");
 			if(len > 96 ) {
 				print_message(user, message);
-				len = format(message, 255, "%s ",COLOR);
+				len = format(message, 255, "%s ", COLOR);
 			}
 		}
 		print_message(user, message);
-	} else {
-		len += format(message[len], 255-len, " No admins online");
+	}
+	else {
+		len += format(message[len], 255-len, "No admins online");
 		print_message(user, message);
 	}
 }

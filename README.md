@@ -3,9 +3,11 @@
 
 This repository contains most of the amxx plugins i have ever used for a Counter-Strike 1.6 Dedicated Server.
 
-Download
---------
-The latest binaries can be found [here](https://github.com/Jessyy/amxx-plugins-sma/releases).
+Notes
+-----
+All the plugi have been renamed, with the following rules:
+- tag "amx_" will pe added if the plugin offers functionality in the console for the client/server
+- tag "say_" will pe added if the plugin offers functionality in the chat for the client
 
 Credits
 -------

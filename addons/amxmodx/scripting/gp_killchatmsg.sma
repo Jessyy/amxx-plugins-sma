@@ -1,5 +1,15 @@
+/**
+ *	Say Admin Check - say_admins.sma
+ *	
+ *	Based on Kill Message w/ VOX v2.7 by God@Dorin from https://forums.alliedmods.net/showthread.php?p=798314
+ *		@released: 11/04/2015 (dd/mm/yyyy)
+ */
 #include <amxmodx>
 #include <amxmisc>
+
+#define PLUGIN_NAME		"GamePlay Kill Message"
+#define PLUGIN_VERSION	"2016.03.19"
+#define PLUGIN_AUTHOR	"X"
 
 new bool:SHOWTHEKILLER	= false
 new bool:SHOWASSASIN	= true
@@ -8,7 +18,7 @@ new g_iMaxClients;
 
 public plugin_init()
 {
-	register_plugin("Kill Message", "1.0.0", "X");
+	register_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR);
 	
 	g_iMaxClients = get_maxplayers();
 	register_event("DeathMsg", "Event_Death", "a");
