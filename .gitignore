@@ -1,0 +1,10 @@
+addons/amxmodx/scripting/compiled/*
+addons/amxmodx/scripting/include/*
+*.dll
+*.exe
+*.dat
+*.sh
+*.bat
+*.lnk
+*.rar
+*.zip
