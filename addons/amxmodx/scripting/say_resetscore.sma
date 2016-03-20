@@ -28,7 +28,7 @@ public plugin_init()
 	register_clcmd("say_team /rs", "SayCmd_ResetScore");
 	
 	register_clcmd("say /reset", "SayCmd_ResetScore");
-	register_clcmd("say_team /reset", "SayCmd_ResetScore";
+	register_clcmd("say_team /reset", "SayCmd_ResetScore");
 	
 	register_clcmd("say /resetscore", "SayCmd_ResetScore");
 	register_clcmd("say_team /resetscore", "SayCmd_ResetScore");

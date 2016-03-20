@@ -1,5 +1,18 @@
+/**
+ *	Say Admin Check - say_stats.sma
+ *	
+ *	Based on New style rank v1.0 by Alka from https://forums.alliedmods.net/showthread.php?p=710055
+ *		@released: 06/11/2008 (dd/mm/yyyy)
+ *	
+ *	Based on New CS Stats v1.0 by sb123 https://forums.alliedmods.net/showthread.php?t=64593
+ *		@released: 11/03/2009 (dd/mm/yyyy)
+ */
 #include <amxmodx>
 #include <csx>
+
+#define PLUGIN_NAME		"Show Stats-X"
+#define PLUGIN_VERSION	"2016.03.19"
+#define PLUGIN_AUTHOR	"X"
 
 new g_bodyParts[8][] = {
 	"Whole Body",
@@ -14,25 +27,25 @@ new g_bodyParts[8][] = {
 
 public plugin_init() 
 {
-	register_plugin("Show Stats-X", "1.0.0", "X");
+	register_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR);
 	
-	register_clcmd("say /rank", "cmdRank", -1);
-	register_clcmd("say_team /rank", "cmdRank", -1);
+	register_clcmd("say /rank", "cmdRank");
+	register_clcmd("say_team /rank", "cmdRank");
 	
-	register_clcmd("say /top10", "cmdTop15", -1);
-	register_clcmd("say_team /top10", "cmdTop15", -1);
+	register_clcmd("say /top10", "cmdTop15");
+	register_clcmd("say_team /top10", "cmdTop15");
 	
-	register_clcmd("say /top15", "cmdTop15", -1);
-	register_clcmd("say_team /top15", "cmdTop15", -1);
+	register_clcmd("say /top15", "cmdTop15");
+	register_clcmd("say_team /top15", "cmdTop15");
 	
-	register_clcmd("say /topme", "cmdTopMe", -1);
-	register_clcmd("say_team /topme", "cmdTopMe", -1);
+	register_clcmd("say /topme", "cmdTopMe");
+	register_clcmd("say_team /topme", "cmdTopMe");
 	
-	register_clcmd("say /statsme", "cmdStatsme", -1);
-	register_clcmd("say_team /statsme", "cmdStatsme", -1);
+	register_clcmd("say /statsme", "cmdStatsme");
+	register_clcmd("say_team /statsme", "cmdStatsme");
 	
-	register_clcmd("say /rankstats", "cmdRankStats", -1);
-	register_clcmd("say_team /rankstats", "cmdRankStats", -1);
+	register_clcmd("say /rankstats", "cmdRankStats");
+	register_clcmd("say_team /rankstats", "cmdRankStats");
 }
 
 Float:acc(stats[8]) 
