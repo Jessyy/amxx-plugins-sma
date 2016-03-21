@@ -1,5 +1,5 @@
 /**
- *	GamePlay Grenade Trail - say_admins.sma
+ *	Grenade Trail - gp_grenadetrail.sma
  *	
  *	Based on Grenade Trail v1.0 by Jim from https://forums.alliedmods.net/showthread.php?p=429750
  *		@released: 21/01/2007 (dd/mm/yyyy)
@@ -7,7 +7,7 @@
 #include <amxmodx>
 #include <csx>
 
-#define PLUGIN_NAME		"GamePlay Grenade Trail"
+#define PLUGIN_NAME		"Grenade Trail"
 #define PLUGIN_VERSION	"2016.03.19"
 #define PLUGIN_AUTHOR	"X"
 

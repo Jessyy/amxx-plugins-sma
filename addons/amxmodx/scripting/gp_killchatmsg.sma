@@ -1,5 +1,5 @@
 /**
- *	Say Admin Check - say_admins.sma
+ *	Kill Chat Message - gp_killchatmsg.sma
  *	
  *	Based on Kill Message w/ VOX v2.7 by God@Dorin from https://forums.alliedmods.net/showthread.php?p=798314
  *		@released: 11/04/2015 (dd/mm/yyyy)
@@ -7,7 +7,7 @@
 #include <amxmodx>
 #include <amxmisc>
 
-#define PLUGIN_NAME		"GamePlay Kill Message"
+#define PLUGIN_NAME		"Kill Chat Message"
 #define PLUGIN_VERSION	"2016.03.19"
 #define PLUGIN_AUTHOR	"X"
 

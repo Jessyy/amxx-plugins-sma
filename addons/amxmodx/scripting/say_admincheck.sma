@@ -1,12 +1,12 @@
 /**
- *	Say Admin Check - say_admins.sma
+ *	Admin Check - say_admincheck.sma
  *	
  *	Based on Admin Check v1.51 by OneEyed from https://forums.alliedmods.net/showthread.php?p=230189
  *		@released: 12/04/2006 (dd/mm/yyyy)
  */
 #include <amxmodx>
 
-#define PLUGIN_NAME		"Say Admin Check"
+#define PLUGIN_NAME		"Admin Check"
 #define PLUGIN_VERSION	"2016.03.19"
 #define PLUGIN_AUTHOR	"X"
 

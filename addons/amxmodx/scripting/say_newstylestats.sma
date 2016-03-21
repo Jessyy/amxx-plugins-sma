@@ -1,5 +1,5 @@
 /**
- *	Say Admin Check - say_stats.sma
+ *	New Style Stats - say_newstylestats.sma
  *	
  *	Based on New style rank v1.0 by Alka from https://forums.alliedmods.net/showthread.php?p=710055
  *		@released: 06/11/2008 (dd/mm/yyyy)
@@ -10,7 +10,7 @@
 #include <amxmodx>
 #include <csx>
 
-#define PLUGIN_NAME		"Show Stats-X"
+#define PLUGIN_NAME		"New Style Stats"
 #define PLUGIN_VERSION	"2016.03.19"
 #define PLUGIN_AUTHOR	"X"
 
@@ -41,8 +41,8 @@ public plugin_init()
 	register_clcmd("say /topme", "cmdTopMe");
 	register_clcmd("say_team /topme", "cmdTopMe");
 	
-	register_clcmd("say /statsme", "cmdStatsme");
-	register_clcmd("say_team /statsme", "cmdStatsme");
+	register_clcmd("say /statsme", "cmdStatsMe");
+	register_clcmd("say_team /statsme", "cmdStatsMe");
 	
 	register_clcmd("say /rankstats", "cmdRankStats");
 	register_clcmd("say_team /rankstats", "cmdRankStats");
@@ -50,9 +50,9 @@ public plugin_init()
 
 Float:acc(stats[8]) 
 {	
-	if(!stats[4])
+	if(!stats[4]) {
 		return (0.0);
-	
+	}
 	new Float:result;
 	result = 100.0 * float(stats[5]) / float(stats[4]);
 	return (result > 100.0) ? 100.0 : result;
@@ -60,9 +60,9 @@ Float:acc(stats[8])
 
 Float:eff(stats[8])
 {
-	if(!stats[0])
+	if(!stats[0]) {
 		return (0.0);
-	
+	}
 	new Float:result;
 	result = 100.0 * float(stats[0]) / float(stats[0] + stats[1]);
 	return (result > 100.0) ? 100.0 : result;
@@ -70,9 +70,9 @@ Float:eff(stats[8])
 
 Float:ratio(stats[8]) 
 {	
-	if(!stats[0])
+	if(!stats[0]) {
 		return (0.0);
-	
+	}
 	new Float:result;
 	result = float(stats[0]) / float(stats[1]);
 	return result;
@@ -114,8 +114,7 @@ public cmdRank(id)
 	
 	copy(g_Buffer[pos], 2047-pos, "</table>");
 	show_motd(id, g_Buffer, "Rank ...");
-	
-	if(!is_user_alive(id)) client_cmd(id, "spk ambience/ratchant");
+	FncPlayerPlaySound(id)
 	
 	return PLUGIN_HANDLED;
 }
@@ -157,8 +156,7 @@ public cmdTop15(id)
 	
 	copy(g_Buffer[pos], 2047-pos, "</table>");
 	show_motd(id, g_Buffer, "Top 15 ...");
-	
-	if(!is_user_alive(id)) client_cmd(id, "spk ambience/ratchant");
+	FncPlayerPlaySound(id)
 	
 	return PLUGIN_HANDLED;
 }
@@ -199,13 +197,12 @@ public cmdTopMe(id)
 	
 	copy(g_Buffer[pos], 2047-pos, "</table>");
 	show_motd(id, g_Buffer, "Topme ...");
-	
-	if(!is_user_alive(id)) client_cmd(id, "spk ambience/ratchant");
+	FncPlayerPlaySound(id)
 	
 	return PLUGIN_HANDLED;
 }
 
-public cmdStatsme(id)
+public cmdStatsMe(id)
 {
 	new pos, g_Buffer[2048], name[32], stats[8], body[8], states[4];
 	get_user_wstats(id, 0, stats, body);
@@ -242,8 +239,7 @@ public cmdStatsme(id)
 	
 	copy(g_Buffer[pos], 2047-pos, "</table>");
 	show_motd(id, g_Buffer, "Statsme ...");
-	
-	if(!is_user_alive(id)) client_cmd(id, "spk ambience/ratchant");
+	FncPlayerPlaySound(id)
 	
 	return PLUGIN_HANDLED;
 }
@@ -285,8 +281,14 @@ public cmdRankStats(id)
 	
 	copy(g_Buffer[pos], 2047-pos, "</table>");
 	show_motd(id, g_Buffer, "RankStats ...");
-	
-	if(!is_user_alive(id)) { client_cmd(id, "spk misc/antend"); }
+	FncPlayerPlaySound(id)
 	
 	return PLUGIN_HANDLED;
+}
+
+stock FncPlayerPlaySound(id)
+{
+	if(!is_user_alive(id)) {
+		client_cmd(id, "spk misc/antend");
+	}
 }

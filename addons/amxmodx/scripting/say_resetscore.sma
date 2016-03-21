@@ -1,5 +1,5 @@
 /**
- *	Say Reset Score - say_resetscore.sma
+ *	Reset Score - say_resetscore.sma
  *	
  *	Based on Reset Score v1.1 by Silenttt from https://forums.alliedmods.net/showthread.php?t=74207
  *		@released: 19/11/2011 (dd/mm/yyyy)
@@ -12,7 +12,7 @@
 #include <cstrike>
 #include <fun>
 
-#define PLUGIN_NAME		"Say Admin Check"
+#define PLUGIN_NAME		"Reset Score"
 #define PLUGIN_VERSION	"2016.03.19"
 #define PLUGIN_AUTHOR	"X"
 

@@ -1,5 +1,5 @@
 /**
- *	GamePlay C4 Blast - gp_c4blast.sma
+ *	C4 Blast - gp_c4blast.sma
  *	
  *	Based on Bomb Blast v0.4 by K.K.Lv from https://forums.alliedmods.net/showthread.php?p=1201074
  *		@released: 03/11/2010 (dd/mm/yyyy)
@@ -8,7 +8,7 @@
 #include <fakemeta>
 #include <csx>
 
-#define PLUGIN_NAME		"GamePlay C4 Blast"
+#define PLUGIN_NAME		"C4 Blast"
 #define PLUGIN_VERSION	"2016.03.19"
 #define PLUGIN_AUTHOR	"X"
 

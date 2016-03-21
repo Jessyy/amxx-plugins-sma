@@ -1,5 +1,5 @@
 /**
- *	Say Restart Match - say_restart.sma
+ *	Restart Match - say_restart.sma
  *	
  *	Based on Round Restart v2.2 by Dorin from https://forums.alliedmods.net/showthread.php?p=798354
  *		@released: 22/05/2011 (dd/mm/yyyy)
@@ -7,7 +7,7 @@
 #include <amxmodx>
 #include <engine>
 
-#define PLUGIN_NAME		"Say Restart Match"
+#define PLUGIN_NAME		"Restart Match"
 #define PLUGIN_VERSION	"2016.03.19"
 #define PLUGIN_AUTHOR	"X"
 
