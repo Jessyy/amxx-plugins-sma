@@ -81,7 +81,9 @@ Float:ratio(stats[8])
 public cmdRank(id)
 {
 	new pos, g_Buffer[2048], stats[8], body[8], stats2[4], name[32];
-	get_user_stats(id, stats, body); get_user_stats2(id, stats2); get_user_name(id, name, 31);
+	get_user_stats(id, stats, body);
+	get_user_stats2(id, stats2);
+	get_user_name(id, name, 31);
 	
 	pos = copy(g_Buffer, 2047, "<html><center>");
 	pos += copy(g_Buffer[pos], 2047-pos, "<head><style type=^"text/css^"><!--body{background-color:#000000;font-family:Arial,sans-serif;color:#FFFFFF;margin-top:10px;}");
