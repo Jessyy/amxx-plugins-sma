@@ -46,7 +46,7 @@ public amx_blind(id, level, cid)
 	if(g_bBlind[user]) {
 		console_print(id, "[BLIND] Client ^"%s^" is already blind", user_name);
 	}
-    else {
+	else {
 		console_print(id, "[BLIND] Client ^"%s^" blinded", user_name);
 		g_bBlind[user] = true;
 		Fade_To_Black(user);
