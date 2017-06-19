@@ -5,17 +5,40 @@
  */
 
 #if defined _amxplus_included
-  #endinput
+	#endinput
 #endif
 #define _amxplus_included
 
-#define MAX_PLAYERS 32
+/**
+ *
+ */
+#define MAX_PLAYERS			(32)
+
+/**
+ *
+ */
+#define MAX_NAME_LENGTH		(32)
+
+/**
+ *
+ */
+#define MAX_IP_LENGTH		(22)
+
+/**
+ *
+ */
+#define MAX_INPUT			(128)
+
+/**
+ *
+ */
+#define MAX_STRING			(256)
 
 /**
  *	Sends colored chat messages to clients.
- *	feature to add https://forums.alliedmods.net/showthread.php?t=277343
+ *	Feature to add from https://forums.alliedmods.net/showthread.php?t=277343
  */
-client_color_print(iPlayer, const szMessage[], {Float, Sql, Result, _}:...)
+stock client_color_print(iPlayer, const szMessage[], {Float, Sql, Result, _}:...)
 {
 	static g_msgSayText;
 	g_msgSayText = get_user_msgid("SayText");
