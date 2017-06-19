@@ -14,6 +14,8 @@
 #define PLUGIN_VERSION	"2017.06.18"
 #define PLUGIN_AUTHOR	"X"
 
+new g_szSound[] = "misc/antend.wav";
+
 new g_szBodyParts[8][] = {
 	"Whole Body",
 	"Head",
@@ -51,7 +53,7 @@ public plugin_init()
 public plugin_precache()
 {
 	if(get_cvar_num("sv_allowprecache")) {
-		precache_sound("misc/antend.wav");
+		precache_sound(g_szSound);
 	}
 }
 
@@ -123,7 +125,7 @@ public Cmd@Rank(id)
 
 	copy(g_Buffer[pos], 2047-pos, "</table>");
 	show_motd(id, g_Buffer, "Rank ...");
-	FncPlayerPlaySound(id)
+	Func@PlaySound(id)
 
 	return PLUGIN_HANDLED;
 }
@@ -165,7 +167,7 @@ public Cmd@Top15(id)
 
 	copy(g_Buffer[pos], 2047-pos, "</table>");
 	show_motd(id, g_Buffer, "Top 15 ...");
-	FncPlayerPlaySound(id)
+	Func@PlaySound(id)
 
 	return PLUGIN_HANDLED;
 }
@@ -206,7 +208,7 @@ public Cmd@TopMe(id)
 
 	copy(g_Buffer[pos], 2047-pos, "</table>");
 	show_motd(id, g_Buffer, "Topme ...");
-	FncPlayerPlaySound(id)
+	Func@PlaySound(id)
 
 	return PLUGIN_HANDLED;
 }
@@ -248,7 +250,7 @@ public Cmd@StatsMe(id)
 
 	copy(g_Buffer[pos], 2047-pos, "</table>");
 	show_motd(id, g_Buffer, "Statsme ...");
-	FncPlayerPlaySound(id)
+	Func@PlaySound(id)
 
 	return PLUGIN_HANDLED;
 }
@@ -290,14 +292,14 @@ public Cmd@RankStats(id)
 
 	copy(g_Buffer[pos], 2047-pos, "</table>");
 	show_motd(id, g_Buffer, "RankStats ...");
-	FncPlayerPlaySound(id)
+	Func@PlaySound(id)
 
 	return PLUGIN_HANDLED;
 }
 
-stock FncPlayerPlaySound(id)
+stock Func@PlaySound(id)
 {
 	if(!is_user_alive(id)) {
-		client_cmd(id, "spk misc/antend");
+		client_cmd(id, "spk %s", g_szSound);
 	}
 }
