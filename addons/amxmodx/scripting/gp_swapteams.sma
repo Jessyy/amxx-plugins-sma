@@ -14,6 +14,8 @@
 
 #define TASK_TEAMSWAP	(454500)
 
+new g_szSound[] = "misc/swap.mp3";
+
 new g_iMaxPlayers, g_bTeamSwap = false;
 
 public plugin_init()
@@ -31,7 +33,7 @@ public plugin_init()
 public plugin_precache()
 {
 	if(get_cvar_num("sv_allowprecache")) {
-		precache_sound("sound/misc/swap.mp3");
+		precache_sound(g_szSound);
 	}
 }
 
@@ -49,7 +51,7 @@ public Event@RoundEnd()
 			}
 		}
 
-		client_cmd(0, "mp3 play sound/misc/swap.mp3");
+		client_cmd(0, "mp3 play %s", g_szSound);
 
 		client_color_print(0, "^1* ^4[SwapTeams]^1: The teams was successfully ^4swapped^1");
 
