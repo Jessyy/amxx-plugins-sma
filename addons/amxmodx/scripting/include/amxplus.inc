@@ -1,5 +1,5 @@
 /**
- *	AMX Mod X Plus- amxplus.sma
+ *	AMX Mod X Plus - amxplus.sma
  *	
  *	This file is provided as is (no warranties).
  */
@@ -33,6 +33,17 @@
  *
  */
 #define MAX_STRING			(256)
+
+/**
+ *	Returns true if precache is enabled, false otherwise.
+ */
+stock is_precache_enabled()
+{
+	if(get_cvar_num("sv_allowdownload") == 2) {
+		return false;
+	}
+	return true;
+}
 
 /**
  *	Sends colored chat messages to clients.

@@ -32,7 +32,7 @@ public plugin_init()
 
 public plugin_precache()
 {
-	if(get_cvar_num("sv_allowprecache")) {
+	if(is_precache_enabled()) {
 		precache_sound(g_szSound);
 	}
 }

@@ -21,15 +21,17 @@ new g_iMaxClients;
 public plugin_init()
 {
 	register_plugin("Cioara", "2.0", "X");
-	
+
 	g_iMaxClients = get_maxplayers();
 	register_event("DeathMsg", "Event_Death", "a");
 }
 
 public plugin_precache()
 {
-	for(new i=0; i < sizeof(ListOfNames); i++) {
-		precache_sound(ListOfNames[i][PLAYER_SOUND]);
+	if(is_precache_enabled()) {
+		for(new i=0; i < sizeof(ListOfNames); i++) {
+			precache_sound(ListOfNames[i][PLAYER_SOUND]);
+		}
 	}
 }
 
@@ -42,17 +44,17 @@ public Event_Death()
 {
 	new killer = read_data(1);
 	new victim = read_data(2);
-	
+
 	if(!(1 <= killer <= g_iMaxClients) || killer == victim)
 		return PLUGIN_HANDLED;
-	
+
 	new vicName[32], phraseIdx;
 	get_user_name(victim, vicName, 31);
-	
+
 	if(IsNameOnList(vicName, phraseIdx)) {
 		client_cmd(0, "spk %s", ListOfNames[phraseIdx][PLAYER_SOUND]);
 	}
-	
+
 	return PLUGIN_CONTINUE;
 }
 
