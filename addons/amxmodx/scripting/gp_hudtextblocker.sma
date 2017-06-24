@@ -57,7 +57,7 @@ public plugin_init()
 {
 	register_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR);
 
-	register_message(get_user_msgid("HudTextArgs"), "Event@HudTextArgs");
+	register_message(get_user_msgid("HudTextArgs"), "Hook@HudTextArgs");
 }
 
 public plugin_cfg()
@@ -73,7 +73,7 @@ public plugin_cfg()
 	}
 }
 
-public Event@HudTextArgs(msgid, msgDest, msgEnt)
+public Hook@HudTextArgs(msgid, msgDest, msgEnt)
 {
 	static hint[g_iMaxHintLenght + 1];
 	get_msg_arg_string(1, hint, charsmax(hint));
