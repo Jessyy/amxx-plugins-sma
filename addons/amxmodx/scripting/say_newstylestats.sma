@@ -8,6 +8,7 @@
  *		@released: 11/03/2009 (dd/mm/yyyy)
  */
 #include <amxmodx>
+#include <amxplus>
 #include <csx>
 
 #define PLUGIN_NAME		"New Style Stats"

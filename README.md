@@ -14,10 +14,11 @@ Credits
 -------
 - Hawk552 for creating [Server Restart](https://forums.alliedmods.net/showthread.php?t=23826)
 - Vicious Vixen for creating [Amx Showip](https://forums.alliedmods.net/showthread.php?t=197662)
-- Lo3 for creating [Auto Swap Teams](https://forums.alliedmods.net/showthread.php?t=90898)
+- Jim for creating [Grenade Trail](https://forums.alliedmods.net/showthread.php?p=429750)
 - joaquimandrade for creating [Hud Text Args Blocker](https://forums.alliedmods.net/showthread.php?p=832880)
 - God@Dorin for creating [Kill Message w/ VOX](https://forums.alliedmods.net/showthread.php?t=798314)
 - Samurai for creating [Ultimate KillStreak Advanced](https://forums.alliedmods.net/showthread.php?t=416080)
+- Lo3 for creating [Auto Swap Teams](https://forums.alliedmods.net/showthread.php?t=90898)
 - OneEyed for creating [Admin Check](https://forums.alliedmods.net/showthread.php?p=230189)
 - Alka for creating [New Style Rank](https://forums.alliedmods.net/showthread.php?p=710055)
 - Silenttt for creating [Reset Score](https://forums.alliedmods.net/showthread.php?t=74207)
