@@ -17,10 +17,10 @@ public plugin_init()
 {
 	register_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR);
 
-	g_pTrailTR = register_cvar("amx_grenade_tr", "2");
-	g_pTrailHE = register_cvar("amx_grenade_he", "255000000");
-	g_pTrailFB = register_cvar("amx_grenade_fb", "999999999");
-	g_pTrailSG = register_cvar("amx_grenade_sg", "000255000");
+	g_pTrailTR = register_cvar("amx_grenade_tr", "2");				// <0/1/2/3> - Disabled / Random Colors / Nade Specific / Team Specific
+	g_pTrailHE = register_cvar("amx_grenade_he", "255000000");		// <RRRGGGBBB> - Set the trail color of Hegrenade
+	g_pTrailFB = register_cvar("amx_grenade_fb", "999999999");		// <RRRGGGBBB> - Set the trail color of Flashbang
+	g_pTrailSG = register_cvar("amx_grenade_sg", "000255000");		// <RRRGGGBBB> - Set the trail color of Smokegrenade
 }
 
 public plugin_precache()

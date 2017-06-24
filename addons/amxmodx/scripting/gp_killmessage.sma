@@ -31,8 +31,8 @@ public plugin_init()
 {
 	register_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR);
 
-	g_pMessageVictim = register_cvar("amx_message_victim", "0");
-	g_pMessageKiller = register_cvar("amx_message_killer", "1");
+	g_pMessageVictim = register_cvar("amx_message_victim", "0");	// <0/1> - Disable / Enable to diplay the kill message
+	g_pMessageKiller = register_cvar("amx_message_killer", "1");	// <0/1> - Disable / Enable to diplay the kill message
 
 	register_event("DeathMsg", "Event@Death", "a");
 
