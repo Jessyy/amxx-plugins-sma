@@ -11,7 +11,7 @@
 #define PLUGIN_VERSION	"2017.06.24"
 #define PLUGIN_AUTHOR	"X"
 
-#define MAX_LEVELS		7
+#define MAX_LEVELS		(7)
 
 new g_szSounds[][] = {
 	"misc/multikill.wav",

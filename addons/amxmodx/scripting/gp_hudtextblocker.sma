@@ -1,20 +1,20 @@
 /**
- *	Hud Text Args Blocker - gp_hudtextargsblocker.sma
- *	
+ *	Hud Text Blocker - gp_hudtextblocker.sma
+ *
  *	Based on Hud Text Args Blocker v1.1 by joaquimandrade from https://forums.alliedmods.net/showthread.php?p=832880
  *		@released: 23/05/2009 (dd/mm/yyyy)
  */
 #include <amxmodx>
 #include <fakemeta>
 
-#define PLUGIN_NAME		"Hud Text Args Blocker"
-#define PLUGIN_VERSION	"2016.03.19"
+#define PLUGIN_NAME		"Hud Text Blocker"
+#define PLUGIN_VERSION	"2017.06.24"
 #define PLUGIN_AUTHOR	"X"
 
-const NextHudTextArgsOffset = 198;
-const HintMaxLen = 38;
+const g_HudTextArgsOffset = 198;
+const g_iMaxHintLenght = 38;
 
-new Hints[][HintMaxLen] = 
+new Hints[][g_iMaxHintLenght] =
 {
 	"hint_win_round_by_killing_enemy",
 	"hint_press_buy_to_purchase",
@@ -46,9 +46,9 @@ new Hints[][HintMaxLen] =
 	"Spec_Duck"
 };
 
-new HintsDefaultStatus[sizeof Hints] = 
+new HintsDefaultStatus[sizeof(Hints)] =
 {
-	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	// 1,1,1,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0
+	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	// 1,1,1,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0
 };
 
 new Trie:HintsStatus;
@@ -56,33 +56,32 @@ new Trie:HintsStatus;
 public plugin_init()
 {
 	register_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR);
-	
-	register_message(get_user_msgid("HudTextArgs"), "hudTextArgs");
+
+	register_message(get_user_msgid("HudTextArgs"), "Event@HudTextArgs");
 }
 
 public plugin_cfg()
 {
 	HintsStatus = TrieCreate();
-	
-	for(new i=0, statusString[2]; i<sizeof Hints; i++) {
-		statusString[0] = HintsDefaultStatus[i] + 48;
-		
-		if(get_pcvar_num(register_cvar(Hints[i],statusString))) {
-			TrieSetCell(HintsStatus,Hints[i][5],true);
+
+	for(new i = 0, iStatus[2]; i < sizeof(Hints); i++) {
+		iStatus[0] = HintsDefaultStatus[i] + 48;
+
+		if(get_pcvar_num(register_cvar(Hints[i], iStatus))) {
+			TrieSetCell(HintsStatus, Hints[i][5], true);
 		}
 	}
 }
 
-public hudTextArgs(msgid, msgDest, msgEnt)
+public Event@HudTextArgs(msgid, msgDest, msgEnt)
 {
-	static hint[HintMaxLen + 1];
-	get_msg_arg_string(1,hint,charsmax(hint));
-	
-	if(TrieKeyExists(HintsStatus,hint[6]))
-	{
-		set_pdata_float(msgEnt,NextHudTextArgsOffset,0.0)
+	static hint[g_iMaxHintLenght + 1];
+	get_msg_arg_string(1, hint, charsmax(hint));
+
+	if(TrieKeyExists(HintsStatus, hint[6])) {
+		set_pdata_float(msgEnt, g_HudTextArgsOffset, 0.0);
 		return PLUGIN_HANDLED;
 	}
-	
+
 	return PLUGIN_CONTINUE;
 }
