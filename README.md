@@ -14,6 +14,7 @@ Credits
 -------
 - Hawk552 for creating [Server Restart](https://forums.alliedmods.net/showthread.php?t=23826)
 - Vicious Vixen for creating [Amx Showip](https://forums.alliedmods.net/showthread.php?t=197662)
+- cheap_suit for creating [C4 Timer](https://forums.alliedmods.net/showthread.php?t=55809)
 - Jim for creating [Grenade Trail](https://forums.alliedmods.net/showthread.php?p=429750)
 - joaquimandrade for creating [Hud Text Args Blocker](https://forums.alliedmods.net/showthread.php?p=832880)
 - God@Dorin for creating [Kill Message w/ VOX](https://forums.alliedmods.net/showthread.php?t=798314)

@@ -1,113 +1,119 @@
 /**
  *	C4 Timer Sprite - gp_c4timersprite.sma
- *	
- *	Based on C4 Timer Sprite v1.1 by cheap_suit from https://forums.alliedmods.net/showthread.php?t=55809?t=55809
+ *
+ *	Based on C4 Timer Sprite v1.1 by cheap_suit from https://forums.alliedmods.net/showthread.php?t=55809
  *		@released: 01/06/2007 (dd/mm/yyyy)
  */
 #include <amxmodx>
-#include <cstrike>
+#include <amxplus>
 #include <amxmisc>
 
 #define PLUGIN_NAME		"C4 Timer Sprite"
-#define PLUGIN_VERSION	"2016.03.19"
+#define PLUGIN_VERSION	"2017.06.25"
 #define PLUGIN_AUTHOR	"X"
 
-new g_c4timer
-new mp_c4timer
+#define MAX_SPRITES		(2)
 
-new g_msg_showtimer
-new g_msg_roundtime
-new g_msg_scenario
+new const g_szSprite[MAX_SPRITES][] = {
+	"bombticking",
+	"bombticking1"
+};
 
-#define MAX_SPRITES 2
-new const g_timersprite[MAX_SPRITES][] = { "bombticking", "bombticking1" }
+new g_pSpriteTimer, g_pSpriteFlash, g_pSpriteModel, g_pMsgShowTimer, g_pMsgRoundRime, g_pMsgScenario, g_pC4Timer;
 
-public cvar_showteam = 3 // <0|1|3> - Off | T's only | CT's only | ALL (Default: 3)
-public cvar_flash = 0 // <0|1> - Sprite Flashing   (Default: 0)
-new cvar_sprite   // <0|1> - Czero | Cstrike
-
-public plugin_init() 
+public plugin_init()
 {
 	register_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR);
-	
-	mp_c4timer = get_cvar_pointer("mp_c4timer")
-	
-	g_msg_showtimer = get_user_msgid("ShowTimer")
-	g_msg_roundtime = get_user_msgid("RoundTime")
-	g_msg_scenario = get_user_msgid("Scenario")
-	
-	register_event("HLTV", "event_hltv", "a", "1=0", "2=0")
-	register_logevent("logevent_defusedthebomb", 2, "1=Round_End")
-	register_logevent("logevent_plantedthebomb", 3, "2=Planted_The_Bomb")
+
+	g_pSpriteTimer = register_cvar("amx_sprite_timer", "3");	// <0/1/2/3> - off / t's only / ct's only / all
+	g_pSpriteFlash = register_cvar("amx_sprite_flash", "0");	// <0/1> - turn on / off the sprite flashing
+	g_pSpriteModel = register_cvar("amx_sprite_model", "1");	// <0/1> - sprite model
+
+	g_pMsgShowTimer = get_user_msgid("ShowTimer");
+	g_pMsgRoundRime = get_user_msgid("RoundTime");
+	g_pMsgScenario = get_user_msgid("Scenario");
+
+	register_logevent("Event@BombPlanted", 3, "2=Planted_The_Bomb");
+	register_logevent("Event@RoundEnd", 2, "1=Round_End");
+
+	g_pC4Timer = get_cvar_pointer("mp_c4timer");
 }
 
-public event_hltv()
+public Event@BombPlanted()
 {
-	g_c4timer = get_pcvar_num(mp_c4timer)
-}
-
-public logevent_plantedthebomb()
-{
-	new showtteam = cvar_showteam
-	
-	static players[32], num, i
-	switch(showtteam)
+	static iPlayers[MAX_PLAYERS], iCount;
+	switch(get_pcvar_num(g_pSpriteTimer))
 	{
-		case 1: get_players(players, num, "ace", "TERRORIST")
-		case 2: get_players(players, num, "ace", "CT")
-		case 3: get_players(players, num, "ac")
-		default: return
+		case 1: {
+			get_players(iPlayers, iCount, "ace", "TERRORIST");
+		}
+		case 2: {
+			get_players(iPlayers, iCount, "ace", "CT");
+		}
+		case 3: {
+			get_players(iPlayers, iCount, "ac");
+		}
+		default: {
+			return;
+		}
 	}
-	for(i = 0; i < num; ++i) {
-		set_task(1.0, "update_timer_start", players[i])
+
+	for(new i = 0; i < iCount; i++) {
+		set_task(0.5, "Timer@Start", iPlayers[i]);
 	}
 }
 
-public update_timer_start(id)
+public Timer@Start(id)
 {
-	if(is_running("cstrike"))
-		{ cvar_sprite = 1; } else { cvar_sprite = 0; }
-	
-	message_begin(MSG_ONE_UNRELIABLE, g_msg_showtimer, _, id)
-	message_end()
-	
-	message_begin(MSG_ONE_UNRELIABLE, g_msg_roundtime, _, id)
-	write_short(g_c4timer)
-	message_end()
-	
-	message_begin(MSG_ONE_UNRELIABLE, g_msg_scenario, _, id)
-	write_byte(1)
-	write_string(g_timersprite[clamp(cvar_sprite, 0, (MAX_SPRITES - 1))])
-	write_byte(150)
-	write_short(cvar_flash ? 20 : 0)
-	message_end()
+	message_begin(MSG_ONE_UNRELIABLE, g_pMsgShowTimer, _, id);
+	message_end();
+
+	message_begin(MSG_ONE_UNRELIABLE, g_pMsgRoundRime, _, id);
+	write_short(get_pcvar_num(g_pC4Timer));
+	message_end();
+
+	message_begin(MSG_ONE_UNRELIABLE, g_pMsgScenario, _, id);
+	write_byte(1);
+	write_string(g_szSprite[clamp(is_running("czero") ? 0 : get_pcvar_num(g_pSpriteModel), 0, MAX_SPRITES - 1)]);
+	write_byte(150);
+	write_short(get_pcvar_num(g_pSpriteFlash) ? 20 : 0);
+	message_end();
 }
 
-public logevent_defusedthebomb()
+public Event@RoundEnd()
 {
-	new showtteam = cvar_showteam
-	
-	static players[32], num, i
-	switch(showtteam)
+	static iPlayers[MAX_PLAYERS], iCount;
+	switch(get_pcvar_num(g_pSpriteTimer))
 	{
-		case 1: get_players(players, num, "ace", "TERRORIST")
-		case 2: get_players(players, num, "ace", "CT")
-		case 3: get_players(players, num, "ac")
-		default: return
+		case 1: {
+			get_players(iPlayers, iCount, "ace", "TERRORIST");
+		}
+		case 2: {
+			get_players(iPlayers, iCount, "ace", "CT");
+		}
+		case 3: {
+			get_players(iPlayers, iCount, "ac");
+		}
+		default: {
+			return;
+		}
 	}
-	for(i = 0; i < num; ++i) set_task(1.0, "update_timer_end", players[i])
+
+	for(new i = 0; i < iCount; i++) {
+		set_task(0.5, "Timer@End", iPlayers[i]);
+	}
 }
 
-public update_timer_end(id)
+public Timer@End(id)
 {
-	message_begin(MSG_ONE_UNRELIABLE, g_msg_showtimer, _, id)
-	message_end()
-	
-	message_begin(MSG_ONE_UNRELIABLE, g_msg_roundtime, _, id)
-	write_short(1)
-	message_end()
-	
-	message_begin(MSG_ONE_UNRELIABLE, g_msg_roundtime, _, id)
-	write_short(1)
-	message_end()
+	message_begin(MSG_ONE_UNRELIABLE, g_pMsgShowTimer, _, id);
+	message_end();
+
+	message_begin(MSG_ONE_UNRELIABLE, g_pMsgRoundRime, _, id);
+	write_short(1);
+	message_end();
+
+	message_begin(MSG_ONE_UNRELIABLE, g_pMsgRoundRime, _, id);
+	write_short(1);
+	message_end();
 }
