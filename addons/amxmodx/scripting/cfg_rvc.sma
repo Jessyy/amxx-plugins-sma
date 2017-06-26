@@ -1,4 +1,5 @@
 #include <amxmodx>
+#include <amxplus>
 
 public toggle_mode		= 6	//0/1/2/3/4/5/6	- Dezactivat / Activat cel in chat / Activat doar cel in hud / Amandoua activate(hud & chat) / Activat cel in chat [fara hostname] / Activat cel can Czero / Activat cel can Czero TimeLeft && NextMap
 public toggle_rvc		= 2	//0/1/2		- Dezactivat / Activat simplu / Activat simplu + efect

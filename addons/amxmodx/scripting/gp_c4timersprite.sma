@@ -14,7 +14,7 @@
 
 #define MAX_SPRITES		(2)
 
-new const g_szSprite[MAX_SPRITES][] = {
+new const g_szSprites[MAX_SPRITES][] = {
 	"bombticking",
 	"bombticking1"
 };
@@ -74,7 +74,7 @@ public Timer@Start(id)
 
 	message_begin(MSG_ONE_UNRELIABLE, g_pMsgScenario, _, id);
 	write_byte(1);
-	write_string(g_szSprite[clamp(is_running("czero") ? 0 : get_pcvar_num(g_pSpriteModel), 0, MAX_SPRITES - 1)]);
+	write_string(g_szSprites[clamp(is_running("czero") ? 0 : get_pcvar_num(g_pSpriteModel), 0, MAX_SPRITES - 1)]);
 	write_byte(150);
 	write_short(get_pcvar_num(g_pSpriteFlash) ? 20 : 0);
 	message_end();

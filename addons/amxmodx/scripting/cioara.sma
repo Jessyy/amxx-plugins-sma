@@ -1,4 +1,5 @@
 #include <amxmodx>
+#include <amxplus>
 #include <amxmisc>
 
 enum PlayerInfo {

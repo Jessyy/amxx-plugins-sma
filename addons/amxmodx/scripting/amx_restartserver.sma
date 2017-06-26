@@ -60,7 +60,7 @@ public Func@Initiate(id, iMode)
 	}
 
 	new szText[MAX_INPUT];
-	format(szText, charsmax(szText), "ALERTA! SERVER %s!", (g_iMode)?("RESTART"):("SHUTDOWN"));
+	format(szText, charsmax(szText), "ALERTA! SERVER %s!", g_iMode ? "RESTART" : "SHUTDOWN");
 
 	client_cmd(0, "spk %s", g_szSounds[10]);
 
@@ -79,7 +79,7 @@ public Func@Countdown()
 	switch(g_iCountDown)
 	{
 		case 1..10: {
-			format(szText, charsmax(szText), "Server %s in %d...", (g_iMode)?("restart"):("shutdown"), g_iCountDown);
+			format(szText, charsmax(szText), "Server %s in %d...", g_iMode ? "restart" : "shutdown", g_iCountDown);
 
 			client_cmd(0, "spk %s", g_szSounds[g_iCountDown - 1]);
 
@@ -87,7 +87,7 @@ public Func@Countdown()
 			server_print(szText);
 		}
 		case 0: {
-			format(szText, charsmax(szText), "Server %s Down...", (g_iMode)?("restart"):("shutdown"));
+			format(szText, charsmax(szText), "Server %s Down...", g_iMode ? "restart" : "shutdown");
 
 			client_print(0, print_chat, szText);
 			server_print(szText);

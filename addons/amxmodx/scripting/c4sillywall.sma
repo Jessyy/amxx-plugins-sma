@@ -1,4 +1,5 @@
 #include <amxmodx>
+#include <amxplus>
 #include <amxmisc>
 #include <cstrike>
 #include <engine>
@@ -8,8 +9,6 @@
 new bool:NUMBERS	= true	// false/true | Random numbers while defusing
 new bool:WALLPLANT	= true	// false/true | Allows you to plant on walls
 new bool:RESTRICT	= true	// false/true | Walking speed while planting/defusing the bomb
-
-#define MAX_PLAYERS 32
 
 new szMsg[128]
 new g_NumberID = 0
