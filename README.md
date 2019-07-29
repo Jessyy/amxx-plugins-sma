@@ -1,7 +1,7 @@
 [AMX MOD X Plugins - SMA][github]
 ====================
 
-This repository contains most of the amxx plugins i have used for a Counter-Strike 1.6 Dedicated Server.
+This repository contains most of the amxx plugins I've used over the years for my Counter-Strike 1.6 Dedicated Server.
 
 Notes
 -----
@@ -14,7 +14,7 @@ Credits
 -------
 - Hawk552 for creating [Server Restart](https://forums.alliedmods.net/showthread.php?t=23826)
 - Vicious Vixen for creating [Amx Showip](https://forums.alliedmods.net/showthread.php?t=197662)
-- cheap_suit for creating [C4 Timer](https://forums.alliedmods.net/showthread.php?t=55809)
+- Cheap_Suit for creating [C4 Timer](https://forums.alliedmods.net/showthread.php?t=55809)
 - Jim for creating [Grenade Trail](https://forums.alliedmods.net/showthread.php?p=429750)
 - joaquimandrade for creating [Hud Text Args Blocker](https://forums.alliedmods.net/showthread.php?p=832880)
 - God@Dorin for creating [Kill Message w/ VOX](https://forums.alliedmods.net/showthread.php?t=798314)

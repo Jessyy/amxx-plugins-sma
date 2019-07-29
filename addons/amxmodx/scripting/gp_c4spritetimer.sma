@@ -1,7 +1,7 @@
 /**
  *	C4 Sprite Timer - gp_c4spritetimer.sma
  *
- *	Based on C4 Timer Sprite v1.1 by cheap_suit from https://forums.alliedmods.net/showthread.php?t=55809
+ *	Based on C4 Timer Sprite v1.1 by Cheap_Suit from https://forums.alliedmods.net/showthread.php?t=55809
  *		@released: 01/06/2007 (dd/mm/yyyy)
  */
 #include <amxmodx>
