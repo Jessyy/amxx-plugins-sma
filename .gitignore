@@ -4,7 +4,8 @@ addons/amxmodx/scripting/include/*
 *.exe
 *.dat
 *.sh
-*.bat
+*.sublime-workspace
 *.lnk
+*.bat
 *.rar
 *.zip
