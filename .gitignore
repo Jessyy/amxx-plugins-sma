@@ -1,5 +1,5 @@
-addons/amxmodx/scripting/compiled/*
-addons/amxmodx/scripting/include/*
+addons/amxmodx/scripting/compiled/
+addons/amxmodx/scripting/include/
 *.dll
 *.exe
 *.dat
